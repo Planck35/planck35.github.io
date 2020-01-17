@@ -22,3 +22,8 @@ public:
 };
 {% endhighlight %}
 In default synthesize copy constructor, the synthesized copy constructor memberwise copies the members of its argument into the object being created. The compiler copies each non`static` member in turn from the given object into the one being created.
+
+The type of each member determines how that member is copied:
+- Members of class type are copied by the copy constructor for that class.
+- Members of built-in type are copied directly.
+- Members of array type by copying each element.
