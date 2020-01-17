@@ -27,3 +27,8 @@ The type of each member determines how that member is copied:
 - Members of class type are copied by the copy constructor for that class.
 - Members of built-in type are copied directly.
 - Members of array type by copying each element.
+
+> Copy initialization
+
+Copy initialization happens not only when we define variables using an `=`, but also when we
+*   s
