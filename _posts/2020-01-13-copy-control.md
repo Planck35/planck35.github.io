@@ -31,4 +31,7 @@ The type of each member determines how that member is copied:
 > Copy initialization
 
 Copy initialization happens not only when we define variables using an `=`, but also when we
-*   s
+*   Pass an object as an argument to a parameter of nonreference type
+*   Return an object from a function that has a nonreference return type
+*   Brace initialize the elements in an array or the members of an aggregate class
+Some class types also use copy initialization for the objects they allocate. For example, the library containers copy initialize their elements when we initialize the container, or when we call an `insert` or `push` member. sBy contrast, elements created by an `emplace` member are direct initialized.
