@@ -35,3 +35,9 @@ Copy initialization happens not only when we define variables using an `=`, but 
 *   Return an object from a function that has a nonreference return type
 *   Brace initialize the elements in an array or the members of an aggregate class
 Some class types also use copy initialization for the objects they allocate. For example, the library containers copy initialize their elements when we initialize the container, or when we call an `insert` or `push` member. sBy contrast, elements created by an `emplace` member are direct initialized.
+
+The `explicit` constructors can not be used in copy initialization period.
+
+> The compiler can bypass the copy constructor
+
+During copy initialization, the compiler is permitted (but not obligated) to skip the copy/move constructor and create the object directly. However, even if the compiler omits the call to the copy/move constructor, the copy/move constructor must exist and must be accessible at that point in the program.
