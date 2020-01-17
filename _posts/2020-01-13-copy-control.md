@@ -41,3 +41,15 @@ The `explicit` constructors can not be used in copy initialization period.
 > The compiler can bypass the copy constructor
 
 During copy initialization, the compiler is permitted (but not obligated) to skip the copy/move constructor and create the object directly. However, even if the compiler omits the call to the copy/move constructor, the copy/move constructor must exist and must be accessible at that point in the program.
+
+What happens when a member is destroyed depends on the type of the member. Members of class type are destroyed by running the member’s own destructor. The built-in types do not have destructors, so nothing is done to destroy members of built-in type.
+
+The implicit destruction of a member of built-in pointer type does not `delete` the object to which that pointer points.
+
+Members that are smart pointers are automatically destroyed during the destruction phase.
+
+> The Synthesized Destructor
+
+The synthesized destructor has an empty function body.
+
+The destructor body does not directly destroy the members themselves. Members are destroyed as part of the implicit destruction phase that follows the destructor body.
