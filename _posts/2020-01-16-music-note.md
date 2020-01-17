@@ -14,4 +14,6 @@ If we say it's in G major, it will mostly use notes token from the scale of G ma
 
 > If a song is in major key, then you can move it around to any other major key.
 
+> If a song is in minor key, then you can move it around to any other minor key.
+
 The notes that the tune ends on is always a big clue on its key, because it's almost the note that the key takes its name from.
