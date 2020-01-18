@@ -53,3 +53,20 @@ Members that are smart pointers are automatically destroyed during the destructi
 The synthesized destructor has an empty function body.
 
 The destructor body does not directly destroy the members themselves. Members are destroyed as part of the implicit destruction phase that follows the destructor body.
+
+> Class that need destructors need copy and assignment
+
+If the class needs a destructor, it almost surely needs a copy constructor and copy-assignment operator as well.
+{% highlight cpp %}
+class HasPtr {
+public:
+    HasPtr(const std::string &s = std::string()):
+    ps(new std::string(s)), i(0) { }
+    ~HasPtr() { delete ps; }
+    // WRONG: HasPtr needs a copy constructor and copy-assignment operator
+    // other members as before
+};
+{% endhighlight %}
+This version of the class uses the synthesized versions of copy and assignment. Those functions copy the pointer member, meaning that multiple HasPtr objects may be pointing to the same memory.
+
+If the class needs an assignment operator, it almost surely needs a copy constructor as well, vice versa.
