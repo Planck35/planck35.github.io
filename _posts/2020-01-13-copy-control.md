@@ -110,3 +110,5 @@ In essence, the copy-control members are synthesized as deleted when it is impos
 
 Classes that want to prevent copying should define their copy constructor and copy-assignment operators using = delete rather than making those members private.
 {: .notice}
+
+The classes that manage resources that do not reside in the class must define the copy-control members. Such classes will need destructors to free the resources allocated by the object. Once a class needs a destructor, it almost surely needs a copy constructor and copy-assignment operator.
