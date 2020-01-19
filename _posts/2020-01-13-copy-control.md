@@ -104,3 +104,6 @@ delete p; // error: NoDtor destructor is deleted
 It is not possible to define an object or delete a pointer to a dynamically
 allocated object of a type with a deleted destructor.
 {: .notice}
+
+In essence, the copy-control members are synthesized as deleted when it is impossible to copy, assign, or destroy a member of the class.
+{: .notice}
