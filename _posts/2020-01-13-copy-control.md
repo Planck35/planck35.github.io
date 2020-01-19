@@ -107,3 +107,6 @@ allocated object of a type with a deleted destructor.
 
 In essence, the copy-control members are synthesized as deleted when it is impossible to copy, assign, or destroy a member of the class.
 {: .notice}
+
+Classes that want to prevent copying should define their copy constructor and copy-assignment operators using = delete rather than making those members private.
+{: .notice}
