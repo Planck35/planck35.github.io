@@ -86,3 +86,21 @@ struct NoCopy {
     // other members
 };
 {% endhighlight %}
+
+If the destructor is deleted, then there is no way to destroy objects of that type. 
+The compiler will not let us define variables or create temporaries of a type that has a deleted destructor.
+
+Although we cannot define variables or members of such types, we can dynamically
+allocate objects with a deleted destructor. However, we cannot free them:
+{% highlight cpp %}
+struct NoDtor {
+    NoDtor() = default; // use the synthesized default constructor
+    ~NoDtor() = delete; // we can't destroy objects of type NoDtor
+};
+NoDtor nd; // error: NoDtor destructor is deleted
+NoDtor *p = new NoDtor(); // ok: but we can't delete p
+delete p; // error: NoDtor destructor is deleted
+{% endhighlight %}
+It is not possible to define an object or delete a pointer to a dynamically
+allocated object of a type with a deleted destructor.
+{: .notice}
