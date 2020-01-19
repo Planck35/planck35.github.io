@@ -70,3 +70,19 @@ public:
 This version of the class uses the synthesized versions of copy and assignment. Those functions copy the pointer member, meaning that multiple HasPtr objects may be pointing to the same memory.
 
 If the class needs an assignment operator, it almost surely needs a copy constructor as well, vice versa.
+
+> Defining a function as deleted
+
+We can prevent copies by defining the copy constructor and copy-assignment operator as deleted functions. 
+A deleted function is one that is declared but may not be used in any other way. 
+We indicate that we want to define a function as deleted by following its parameter list with = delete.
+
+{% highlight cpp %}
+struct NoCopy {
+    NoCopy() = default; // use the synthesized default constructor
+    NoCopy(const NoCopy&) = delete; // no copy
+    NoCopy &operator=(const NoCopy&) = delete; // no assignment
+    ~NoCopy() = default; // use the synthesized destructor
+    // other members
+};
+{% endhighlight %}
