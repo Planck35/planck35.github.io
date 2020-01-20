@@ -130,3 +130,12 @@ Because rvalue references can only be bound to temporaries, we know that:
 - The referred-to object is about to be destroyed.
 - There can be no other users of that object.
 Code that uses an rvalue reference is free to take over resources from the object to which the reference refers.
+
+> Variables are lvalues
+
+Variable is an expression with one operand and no operator. Variable expressions are lvalues. We cannot bind an rvalue reference to a variable defined as an rvalue reference type.
+
+{% highlight cpp %}
+int &&rr1 = 42; // ok: literals are rvalues
+int &&rr2 = rr1; // error: the expression rr1 is an lvalue!
+{% endhighlight %}
