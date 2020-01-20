@@ -121,3 +121,12 @@ Moreover, some expressions yield objects but return them as rvalues, not lvalues
 Roughlt speaking, when we use an object as an rvalue, we use the object's value(its contents).
 When we use an object as an lvalue, we use the object's identity(its location in memory).
 The important point is that we can use an lvalue when an rvalue is required, but we cannot use a rvalue when an lvalue is required.
+
+> Lvalues persist & Rvalue are ephemral
+
+Lvalues have persistent state, whereas rvalues are either literals or temporary objects created in the course of evaluating expressions.
+
+Because rvalue references can only be bound to temporaries, we know that:
+- The referred-to object is about to be destroyed.
+- There can be no other users of that object.
+Code that uses an rvalue reference is free to take over resources from the object to which the reference refers.
