@@ -112,3 +112,12 @@ Classes that want to prevent copying should define their copy constructor and co
 {: .notice}
 
 The classes that manage resources that do not reside in the class must define the copy-control members. Such classes will need destructors to free the resources allocated by the object. Once a class needs a destructor, it almost surely needs a copy constructor and copy-assignment operator.
+
+> Lvalues and Rvalues
+
+In C++, an lvalue expression yields an object or a function.
+However, some lvalues, such as `const` objects, may not be the left-hand operand of an assignment. 
+Moreover, some expressions yield objects but return them as rvalues, not lvalues.
+Roughlt speaking, when we use an object as an rvalue, we use the object's value(its contents).
+When we use an object as an lvalue, we use the object's identity(its location in memory).
+The important point is that we can use an lvalue when an rvalue is required, but we cannot use a rvalue when an lvalue is required.
