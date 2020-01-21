@@ -152,3 +152,16 @@ int &&rr3 = std::move(rr1); // ok
 It is essential to realize that the call to `move` promises that we do not
 intend to use `rr1` again except to assign to it or to destroy it. 
 After a call to `move`, we cannot make any assumptions about the value of the moved-from object.
+
+If we promise that a function does not throw any exceptions. We specify `noexcept` on a function after its parameter list. In a constructor, noexcept appears between the parameter list and the : that begins the constructor initializer list.
+{% highlight cpp %}
+class StrVec {
+public:
+    StrVec(StrVec&&) noexcept; // move constructor
+    // other members as before
+}
+StrVec::StrVec(StrVec &&s) noexcept : /* member initializers */
+{ /* constructor body */ }
+{% endhighlight %}
+We must specify `noexcept` on both the declaration in the class header and on the
+definition if that definition appears outside the class.
