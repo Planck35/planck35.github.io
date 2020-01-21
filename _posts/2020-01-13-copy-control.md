@@ -139,3 +139,16 @@ Variable is an expression with one operand and no operator. Variable expressions
 int &&rr1 = 42; // ok: literals are rvalues
 int &&rr2 = rr1; // error: the expression rr1 is an lvalue!
 {% endhighlight %}
+
+> The library `move` function
+
+Although we cannot directly bind an rvalue reference to an lvalue, we can explicitly cast an lvalue to its corresponding rvalue reference type.
+We can also obtain an rvalue reference bound to an lvalue by calling a new library function named move.
+
+{% highlight cpp %}
+int &&rr3 = std::move(rr1); // ok
+{% endhighlight %}
+
+It is essential to realize that the call to `move` promises that we do not
+intend to use `rr1` again except to assign to it or to destroy it. 
+After a call to `move`, we cannot make any assumptions about the value of the moved-from object.
