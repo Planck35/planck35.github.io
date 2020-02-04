@@ -16,3 +16,9 @@ An overloaded operator function has the same number of parameters as the operato
 Except for the overloaded function-call operator, `operator()`, an overloaded operator may not have default arguments.
 
 If an operator function is a member function, the first(left-hand) operand is bound to the implicit `this` pointer. Because the first operand is implicity bound to `this`, a member operator function has one less(explicit) parameter than the operator has operands.
+
+An operator function must either be a member of a class or have at least one parameter of class type.
+{% highlight cpp %}
+// error: cannot redefine the built-in operator for ints
+int operator+(int, int);
+{% endhighlight %}
