@@ -31,3 +31,16 @@ We should not overload the comma and address-of operator(`&`). The language defi
 
 Ordinarily, the comma, address-of, logical `AND`, and logical `OR` operators should `not` be overloaded.
 {: .notice}
+
+To be consistent with other output operators, `operator<<` normally returns its `ostream` parameter.
+{% highlight cpp %}
+ostream &operator<<(ostream &os, const Sales_data &item)
+{
+    os << item.isbn() << " " << item.units_sold << " " << item.revenue << " " << item.avg_price();
+    return os;
+}
+{% endhighlight %}
+
+## IO Operators Must Be Nonmember Functions
+
+These operators cannot be members of your own class. If they were, then the left-hand operand would have to be an object of our class type.
