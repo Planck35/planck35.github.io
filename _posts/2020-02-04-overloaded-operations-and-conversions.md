@@ -44,3 +44,5 @@ ostream &operator<<(ostream &os, const Sales_data &item)
 ## IO Operators Must Be Nonmember Functions
 
 These operators cannot be members of your own class. If they were, then the left-hand operand would have to be an object of our class type.
+
+IO operators usually need to read or write the non`public` data members. As a consequence, IO operators usually must be declared as friends.
