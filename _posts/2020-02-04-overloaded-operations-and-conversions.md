@@ -46,3 +46,5 @@ ostream &operator<<(ostream &os, const Sales_data &item)
 These operators cannot be members of your own class. If they were, then the left-hand operand would have to be an object of our class type.
 
 IO operators usually need to read or write the non`public` data members. As a consequence, IO operators usually must be declared as friends.
+
+We define the arithmetic and relational operators as nonmember functions in order to allow conversions for either the left- or right-hand operand. These operators shouldn't need to change the state of either operand, so the parameters are ordinarily references to `const`.
