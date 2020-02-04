@@ -22,3 +22,12 @@ An operator function must either be a member of a class or have at least one par
 // error: cannot redefine the built-in operator for ints
 int operator+(int, int);
 {% endhighlight %}
+
+Some operators shouldn't be overloaded
+
+The overloaded versions of `&&` or `||` operators do not preserve short-circuit evaluation properties of the built-in operators. Both oeprands are always evaluated.
+
+We should not overload the comma and address-of operator(`&`). The language defines what the comma and adderss-of operators mean when applied to objhects of class type. Because these operators have built-in meaning, they ordinarily should not be overloaded.
+
+Ordinarily, the comma, address-of, logical `AND`, and logical `OR` operators should `not` be overloaded.
+{: .notice}
