@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "CPP Primer Reading Log: Overloaded operations and conversions"
-date:   2020-01-13
+date:   2020-02-04
 excerpt: "Personal reading log."
 tag: [reading log, cpp]
 ---
