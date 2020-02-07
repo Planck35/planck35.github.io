@@ -52,3 +52,14 @@ We define the arithmetic and relational operators as nonmember functions in orde
 ## Differentiating Prefix and Postfix Operators
 
 Normal overloading cannot distinguish between these operators. The prefix and postfix versions use the same symbol. They also have the same number and type of operands.
+
+To solve this problem, the postfix versions take an extra parameter of type `int`. When we use a postfix operator, the compiler supplies 0 as the argument for this parameter.
+
+## Calling the Postfix Operators Explicitly
+
+If we want to call the postfix version using a function call, then we must pas a value for the integer argument.
+{% highlight cpp %}
+StrBlobPtr p(al); // p points to the vector inside al
+p.operator++(0); // call postfix operator++
+p.operator++();  // call prefix operator++
+{% endhighlight %}
