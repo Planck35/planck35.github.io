@@ -64,3 +64,11 @@ p.operator++(0); // call postfix operator++
 p.operator++();  // call prefix operator++
 {% endhighlight %}
 The value passed usually is ignored but is necessary in order to tell the compiler to use the postfix version.
+
+## Function-Call operator
+
+Classes that overload the call operator allow objects of its type to be used as if they were a function.
+
+The function-call operator must be a member function. A class may define multiple versions of the call operator, each of which must differ as to the number or types of their parameters.
+
+When we write a lambda, the compiler translates that expression into an unnamed object of an unnamed class. The classes generated from a lambda contain an overloaded function-call operator.
