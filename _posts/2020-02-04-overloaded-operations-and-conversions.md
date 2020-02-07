@@ -63,3 +63,4 @@ StrBlobPtr p(al); // p points to the vector inside al
 p.operator++(0); // call postfix operator++
 p.operator++();  // call prefix operator++
 {% endhighlight %}
+The value passed usually is ignored but is necessary in order to tell the compiler to use the postfix version.
