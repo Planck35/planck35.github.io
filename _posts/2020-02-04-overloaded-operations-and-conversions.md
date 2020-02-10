@@ -72,3 +72,26 @@ Classes that overload the call operator allow objects of its type to be used as 
 The function-call operator must be a member function. A class may define multiple versions of the call operator, each of which must differ as to the number or types of their parameters.
 
 When we write a lambda, the compiler translates that expression into an unnamed object of an unnamed class. The classes generated from a lambda contain an overloaded function-call operator.
+
+## Library-Defined 
+The standard library defines a set of classes that represent the arithmetic, relational, and logical operators. 
+Each class defines a call operator that applies the named operation.
+
+## Using a Library function object with the Algorithms
+The function-object class that represent operators are often used to override the default operator used by an algorithm.
+
+## Different Types Can Have the Same Call Signature
+Sometimes we want to treat several callable objects that share a call signature as if they had the same type. 
+For example, consider the following different types of callable objects:
+{% highlight cpp %}
+// ordinary function
+int add(int i, int j) { return i + j; }
+// lambda, which generates an unnamed function-object class
+auto mod = [](int i, int j) { return i % j; };
+// function-object class
+struct div {
+    int operator()(int denominator, int divisor) {
+        return denominator / divisor;
+    }
+};
+{% endhighlight %}
