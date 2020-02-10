@@ -116,3 +116,12 @@ binops.insert({"+", add}); // {"+", add} is a pair
 However, we can’t store `mod` or `div` in `binops`.
 The problem is that `mod` is a lambda, and each lambda has its own class type. 
 That type does not match the type of the values stored in `binops`.
+
+`function` is a template. We must specify additional information when we create a `function` type.
+That information is the call signature of the objects that this particular `function` type can represent.
+As with other templates, we specify the type inside angle brackets.
+{% highlight cpp %}
+function<int(int, int)>
+{% endhighlight %}
+
+We can also define conversions from the class type by defining a conversion operator.
