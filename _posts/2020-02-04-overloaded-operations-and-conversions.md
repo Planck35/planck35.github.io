@@ -95,3 +95,24 @@ struct div {
     }
 };
 {% endhighlight %}
+
+Each of these callables applies an arithmetic operation to its parameters.
+Even though each has a distinct type, they all share the same call signature.
+
+We’d want to define a function table to store “pointers” to these callables.
+When the program needs to execute a particular operation, it will look in the table to find which function to call.
+
+We define the map as:
+{% highlight cpp %}
+// maps an operator to a pointer to a function taking two ints and returning an int
+map<string, int(*)(int,int)> binops;
+{% endhighlight %}
+We could put a pointer to add into binops as follows:
+{% highlight cpp %}
+// ok: add is a pointer to function of the appropriate type
+binops.insert({"+", add}); // {"+", add} is a pair
+{% endhighlight %}
+
+However, we can’t store `mod` or `div` in `binops`.
+The problem is that `mod` is a lambda, and each lambda has its own class type. 
+That type does not match the type of the values stored in `binops`.
