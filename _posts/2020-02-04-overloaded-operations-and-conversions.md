@@ -136,3 +136,15 @@ Conversions to an array or a function type are not permitted.
 
 Conversion operations ordinarily should not change the object they are converting. 
 As a result, conversion operators usually should be defined as `const` members.
+
+## Conversion Operators Can Yield Suprising Results
+
+{% highlight cpp %}
+int i = 42;
+cin << i; // this code would be legal if the conversion to bool were not explicit!
+{% endhighlight %}
+This program attempts to use the output operator on an input stream. There is no `<<` defined for `istream`, so the code is almost surely in error. 
+However, this code could use the `bool` conversion operator to convert `cin` to `bool`. 
+The resulting `bool` value would then be promoted to `int` and used as the left-hand operand to the built-in
+version of the left-shift operator. 
+The promoted `bool` value (either 1 or 0) would be shifted left 42 positions.
