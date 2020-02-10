@@ -125,3 +125,14 @@ function<int(int, int)>
 {% endhighlight %}
 
 We can also define conversions from the class type by defining a conversion operator.
+
+A conversion operator is a special kind of member function that converts a value of a class type to a value of some other type. 
+A conversion function typically has the general form
+{% highlight cpp %}
+operator type() const;
+{% endhighlight %}
+Conversion operators can be defined for any type (other than `void`) that can be a function return type. 
+Conversions to an array or a function type are not permitted.
+
+Conversion operations ordinarily should not change the object they are converting. 
+As a result, conversion operators usually should be defined as `const` members.
